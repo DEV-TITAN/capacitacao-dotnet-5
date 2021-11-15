@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using LojaTitanica.Data;
 using LojaTitanica.Models;
@@ -22,6 +25,16 @@ namespace LojaTitanica.Services
                 return true;
             }
             return false;
+        }
+
+        public List<Produto> ListarProdutos()
+        {
+            return _db.Produtos.ToList<Produto>();
+        }
+
+        internal List<Produto> CriarProduto(object produto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

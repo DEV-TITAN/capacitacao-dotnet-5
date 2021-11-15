@@ -31,5 +31,18 @@ namespace LojaTitanica.Controllers
             }
             
         }
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            try 
+            {
+                List<Produto> produtos = _db.ListarProdutos();
+                return Ok(produtos);
+            } catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
