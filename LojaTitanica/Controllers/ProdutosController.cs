@@ -23,8 +23,8 @@ namespace LojaTitanica.Controllers
         {
             try 
             {
-                await _db.CriarProduto(produto);
-                return Ok();
+                bool changed = await _db.CriarProduto(produto);
+                return Ok(changed);
             } catch (Exception ex)
             {
                 return BadRequest(ex.Message);
