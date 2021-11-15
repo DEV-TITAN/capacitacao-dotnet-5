@@ -7,8 +7,9 @@ namespace LojaTitanica.Models
     public class Venda
     {
         public int id { get; set; }
-        public int idCliente { get; set; }
+        public Cliente cliente { get; set; }
         public decimal valorTotal { get; set; }
+        public List<Item> items { get; set; }
         public StatusVenda status { get; set; }
         
     }
