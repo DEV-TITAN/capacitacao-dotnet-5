@@ -26,7 +26,8 @@ namespace LojaTitanica.Controllers
             {
                 int idVenda = await _db.CriarVenda(request.idCliente);
                 return Ok(new {idVenda = idVenda});
-            } catch (Exception ex)
+            } 
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -40,7 +41,37 @@ namespace LojaTitanica.Controllers
             {
                 List<Venda> Vendas = _db.ListarVendas();
                 return Ok(Vendas);
-            } catch (Exception ex)
+            } 
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPut]
+        [Route("AdicionarItem")]
+        public async Task<IActionResult> AdicionarItem(AdicionarItemRequest request)
+        {
+            try
+            {
+                Produto produto = _db.ProdutoPorId(request.idProduto);
+                if (produto.quantidade < request.quantidade) 
+                {
+                    return BadRequest("Quantidade indisponível!");
+                }
+                if (produto == null) 
+                {
+                    return BadRequest("Produto não encontrado.");
+                }
+                Item item = new Item()
+                {
+                    produto = produto,
+                    quantidade = request.quantidade
+                };
+                bool adicionou = await _db.AdicionarItem(request.idVenda, item);
+                return Ok(adicionou);
+            } 
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
