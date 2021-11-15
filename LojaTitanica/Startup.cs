@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LojaTitanica.Data;
+using LojaTitanica.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +31,7 @@ namespace LojaTitanica
         {
             string dbConnectionString = Configuration.GetConnectionString("MySQLAppConnection");
             services.AddDbContext<MySQLContext>(opt => opt.UseMySql(dbConnectionString, ServerVersion.AutoDetect(dbConnectionString)));
+            services.AddScoped<DBService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
