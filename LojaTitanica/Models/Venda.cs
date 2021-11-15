@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using LojaTitanica.Enumerators;
 
 namespace LojaTitanica.Models
 {
@@ -7,8 +8,8 @@ namespace LojaTitanica.Models
     {
         public int id { get; set; }
         public int idCliente { get; set; }
-        public List<Produto> produtos { get; set; }
         public decimal valorTotal { get; set; }
+        public StatusVenda status { get; set; }
         
     }
 }

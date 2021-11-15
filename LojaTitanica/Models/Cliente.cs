@@ -6,6 +6,5 @@ namespace LojaTitanica.Models
     {
         public int id { get; set; }
         public string nome { get; set; }
-        public List<Venda> compras { get; set; }
     }
 }
