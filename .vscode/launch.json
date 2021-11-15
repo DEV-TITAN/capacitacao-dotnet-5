@@ -11,6 +11,7 @@
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/LojaTitanica/bin/Debug/net5.0/LojaTitanica.dll",
             "args": [],
+            "justMyCode": false,
             "cwd": "${workspaceFolder}/LojaTitanica",
             "stopAtEntry": false,
             "serverReadyAction": {
